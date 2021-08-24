@@ -31,7 +31,7 @@ public class NoteActivity extends AppCompatActivity {
     private int mNotePosition;
     private boolean misCancelling;
     private NoteActivityViewModel mViewModel;
-//note
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
