@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Adobes/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/activity_note.xml" value="0.2324074074074074" />
+        <entry key="..\:/Users/Adobes/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/activity_note_list.xml" value="0.2324074074074074" />
+        <entry key="..\:/Users/Adobes/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/content_note.xml" value="0.2324074074074074" />
+        <entry key="..\:/Users/Adobes/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/content_note_list.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Adobes/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/item_note_list.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Adobes/AndroidStudioProjects/NoteKeeper/app/src/main/res/menu/menu_note.xml" value="0.27291666666666664" />
       </map>
     </option>
