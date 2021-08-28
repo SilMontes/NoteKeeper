@@ -66,7 +66,7 @@ public class NoteListActivity extends AppCompatActivity {
         });
         */
 
-        //Recicle View
+        //Recicler View
         final RecyclerView recyclerNotes =(RecyclerView) findViewById(R.id.list_notes);
         final LinearLayoutManager notesLayoutManager = new LinearLayoutManager(this);
         recyclerNotes.setLayoutManager(notesLayoutManager);

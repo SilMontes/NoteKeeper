@@ -40,12 +40,20 @@ public class NoteActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mNotePosition = POSITION_NOT_SET;
+
         ViewModelProvider viewModelProvider = new ViewModelProvider(getViewModelStore(),
          ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()));
         mViewModel = viewModelProvider.get(NoteActivityViewModel.class);
 
-        if (mViewModel.mIsNewlyCreated && savedInstanceState != null)
+        if (mViewModel.mIsNewlyCreated && savedInstanceState != null) {
             mViewModel.restoreState(savedInstanceState);
+            mNotePosition = mViewModel.mOriginalNotePosition;
+            readDisplayStateValues();
+        }else {
+            readDisplayStateValues();
+            saveOriginalNoteValues();
+        }
 
         mViewModel.mIsNewlyCreated = false;
 
@@ -59,8 +67,8 @@ public class NoteActivity extends AppCompatActivity {
 
         mSpinnerCourses.setAdapter(adapterCourses);
 
-        readDisplayStateValues();
-        saveOriginalNoteValues();
+        //readDisplayStateValues();
+        //saveOriginalNoteValues();
 
         mTextNoteTitle = findViewById(R.id.text_note_title);
         mTextNoteText = findViewById(R.id.text_note_text);
@@ -72,6 +80,7 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void saveOriginalNoteValues() {
+        mViewModel.mOriginalNotePosition = mNotePosition;
         if (mIsNewNote)
             return;
         mViewModel.mOriginalNoteCourseId = mNote.getCourse().getCourseId();
@@ -101,13 +110,15 @@ public class NoteActivity extends AppCompatActivity {
 
         mIsNewNote = position == POSITION_NOT_SET;
 
-        if(mIsNewNote){
+        if(mNotePosition != POSITION_NOT_SET){
+
+            position = mNotePosition;
+        }
+        if(mIsNewNote && mNotePosition == POSITION_NOT_SET){
             createNewNote();
         }else{
             mNote=DataManager.getInstance().getNotes().get(position);
         }
-
-
     }
     private void createNewNote(){
         DataManager dm = DataManager.getInstance();
@@ -158,9 +169,17 @@ public class NoteActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         if(misCancelling){
+            /*
             if(mIsNewNote)
                 DataManager.getInstance().removeNote(mNotePosition);
                 storePreviousNoteValues();
+
+             */
+            if (mIsNewNote) {
+                DataManager.getInstance().removeNote(mNotePosition);
+            } else {
+                storePreviousNoteValues();
+            }
         }else{
             saveNote();
         }
