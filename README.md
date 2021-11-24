@@ -1,5 +1,5 @@
 # NoteKeeper
 
 <div align='center'>
-  <img src="notekeeper.gif" width="500"/>
+  <img src="notekeeper.gif" width="800"/>
 </div>
